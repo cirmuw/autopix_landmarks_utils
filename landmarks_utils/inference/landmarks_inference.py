@@ -62,7 +62,6 @@ from  landmarks_utils.data.data_utils import (
 
 import landmarks_utils.visualization.plot_landmarks
 import landmarks_utils.data
-import landmarks_utils.data.data_handler
 import landmarks_utils.data.dataloader_CR_landmarks
 import landmarks_utils.visualization.plot_landmarks #.plot_landmarks
 import landmarks_utils.data.data_utils
@@ -76,8 +75,6 @@ import pandas as pd
 
 import numpy as np
 from sklearn.model_selection import KFold
-
-from landmarks_utils.data.splits_utils import generate_split_dictionary
 
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -98,7 +95,7 @@ import mlflow
 import mlflow.pytorch
 
 def load_models_and_settings(config):
-    if config["model"]["reload_from_state_dict"]:
+    if config["model"].get("reload_from_state_dict", False):
         raise NotADirectoryError()
     else: 
         # define mlflow runs directory
