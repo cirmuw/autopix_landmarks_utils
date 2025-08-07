@@ -45,10 +45,21 @@ After installation and updating the example config files (see `runs/config_/_ann
 
 This will start the UI for the annotation. 
 
-###### DEMO 
-<!---- TODO: Inset gif  from ./doc/images/annotation_demo.gif  -->
+#### 🖼️ Demo
+
+![Annotation Demo](./documentation/images/DEMO_annotation_v1_compressed.gif)
 
 
+![Annotation Demo](./documentation/images/DEMO_annotation_v2_compressed.gif)
+
+
+![Annotation Demo](./documentation/images/DEMO_annotation_v3_with_Groudtruth.gif)
+
+
+
+<!-----
+[🎥 Click here to watch the annotation demo (MP4)](./documentation/images/DEMO_annotation_v1.mkv)
+-->
 
 ##### Training landmark detection 
 Update the config in `./runs/config_landmarks/hands/H_train_landmarks_102p1__updated_data_handler.yaml`
