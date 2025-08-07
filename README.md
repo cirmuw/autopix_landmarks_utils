@@ -45,13 +45,6 @@ After installation and updating the example config files (see `runs/config_/_ann
 
 This will start the UI for the annotation. 
 
-#### 🖼️ Demo
-
-- [Annotation Demo 1: Basic point annotations](./documentation/annotation_demo1.md)
-- [Annotation Demo 2: Updating predictions of the model](./documentation/annotation_demo2.md)
-- [Annotation Demo 3: Training annotators and checking against ground truth](./documentation/annotation_demo3.md)
-
-
 
 
 
@@ -81,7 +74,45 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 
 
 
+---
 
+## 📌 Annotation Examples
+
+| F-case | F-case | H-case | H-case |
+| :---: | :---: | :---: | :---: |
+| ![F sample 1](./documentation/images/annoation_F_sample_01.png) | ![F sample 2](./documentation/images/annoation_F_sample_02.png) | ![H sample 1](./documentation/images/annoation_H_sample_01.png) | ![H sample 2](./documentation/images/annoation_H_sample_02.png) |
+
+---
+
+## 🖼️ Demo
+
+- [Annotation Demo 1: Basic point annotations](./documentation/annotation_demo1.md)
+- [Annotation Demo 2: Updating predictions of the model](./documentation/annotation_demo2.md)
+- [Annotation Demo 3: Training annotators and checking against ground truth](./documentation/annotation_demo3.md)
+
+
+
+
+
+## 🗂️ Patch Extraction Examples
+
+| F-patch | H-patch |
+| :---: | :---: |
+| ![F patch S-TP1](./documentation/images/patch_F_STP1_sample01.png) | ![H patch](./documentation/images/patch_H_sample01.png) |
+
+---
+
+## 📈 Metrics & Results
+
+| CPE Curves (F) | CPE Curves (H) |
+| :---: | :---: |
+| ![CPE F](./documentation/results/CPE_curves_F_580c_2025-08-07.png) | ![CPE H](./documentation/results/CPE_curves_H_580c_2025-08-07.png) |
+
+| SDR (F) | SDR (H) |
+| :---: | :---: |
+| ![SDR F](./documentation/results/SDR_F_2025-08-07.png) | ![SDR H](./documentation/results/SDR_H_2025-08-07.png) |
+
+---
 
 
 
