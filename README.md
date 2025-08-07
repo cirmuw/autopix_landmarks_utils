@@ -47,13 +47,13 @@ This will start the UI for the annotation.
 
 #### 🖼️ Demo
 
-![Annotation Demo](./documentation/images/DEMO_annotation_v1_compressed.gif)
+#### 🖼️ Demos
+
+- [Annotation Demo 1](documentation/annotation_demo_v1.md)
+- [Annotation Demo 2](documentation/annotation_demo_v2.md)
+- [Annotation Demo 3 – With Ground Truth](documentation/annotation_demo_v3.md)
 
 
-![Annotation Demo](./documentation/images/DEMO_annotation_v2_compressed.gif)
-
-
-![Annotation Demo](./documentation/images/DEMO_annotation_v3_with_Groudtruth.gif)
 
 
 
