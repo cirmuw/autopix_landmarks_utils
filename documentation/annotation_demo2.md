@@ -24,5 +24,5 @@ Afterwards on simply runs:
 ```
 
 
-![Annotation Demo](./documentation/images/DEMO_annotation_v2_compressed.gif)
+![Annotation Demo](./images/DEMO_annotation_v2_compressed.gif)
 

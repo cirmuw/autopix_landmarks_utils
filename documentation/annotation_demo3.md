@@ -7,7 +7,7 @@ To do this, the ground truth coordinates must be included in the same CSV file t
 
 📊 **Example Table Format**:
 
-![Annotation Table](./documentation/images/DEMO3_table.png)
+![Annotation Table](./images/DEMO3_table.png)
 
 ---
 
@@ -27,3 +27,4 @@ One can then **toggle** between showing the ground truth and not by pressing the
 
 
 
+![Annotation Demo](./images/DEMO_annotation_v3_with_Groudtruth.gif)

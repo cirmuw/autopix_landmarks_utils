@@ -3,7 +3,7 @@
 📊 **Example Table Format**:
 
 
-![Annotation Table](./documentation/images/DEMO1_table.png)
+![Annotation Table](./images/DEMO1_table.png)
 
 ---
 
@@ -59,7 +59,7 @@ It can simply be run as:
 
 ###### DEMO
 
-![Annotation Demo](./documentation/images/DEMO_annotation_v1_compressed.gif)
+![Annotation Demo](./images/DEMO_annotation_v1_compressed.gif)
 
 
 
