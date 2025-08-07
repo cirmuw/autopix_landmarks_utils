@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import pydicom
 from pathlib import Path
-from ra_utils.annotation.point_annotator import point_annotator, point_annotator_multi
-import ra_utils.utils.config_parser
+from landmarks_utils.annotation.point_annotator import point_annotator, point_annotator_multi
+import landmarks_utils.utils.config_parser
 
 import pandas as pd
 from pathlib import Path
@@ -64,7 +64,7 @@ def make_df_double_scoring(df_wide: pd.DataFrame) -> pd.DataFrame:
 def main():
     # 👇 Replace this with your actual DICOM path
     
-    config, config_name = ra_utils.utils.config_parser.load_config(
+    config, config_name = landmarks_utils.utils.config_parser.load_config(
         default_config="/home/clemens/data/AutoPIX_cirdata/projects__autoscora/tabular_data_cw/annotation_dir/day0/config_F.yml", 
         debugging_in_jupyter_nb=False, silencium=False, return_config_name=True, 
     )

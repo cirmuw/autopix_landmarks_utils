@@ -49,19 +49,19 @@ import copy
 
 
 #   My stuff
-import ra_utils
-import ra_utils.data.data_utils
-from ra_utils.data.data_utils import (
+import landmarks_utils
+import landmarks_utils.data.data_utils
+from landmarks_utils.data.data_utils import (
     extract_extras_from_filename,
     extract_extras_from_abspath
 )
 
-import ra_utils.utils
-import ra_utils.visualization.plot_landmarks
-import ra_utils.data
-import ra_utils.data.data_handler
-import ra_utils.data.dataloader_CR_landmarks
-import ra_utils.utils.utils_mlflow
+import landmarks_utils.utils
+import landmarks_utils.visualization.plot_landmarks
+import landmarks_utils.data
+import landmarks_utils.data.data_handler
+import landmarks_utils.data.dataloader_CR_landmarks
+import landmarks_utils.utils.utils_mlflow
 import pydicom
 import numpy as np
 import pandas as pd
@@ -69,29 +69,29 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 
-from ra_utils.data.splits_utils import generate_split_dictionary
+from landmarks_utils.data.splits_utils import generate_split_dictionary
 
-from ra_utils.utils.config_parser import load_config
+from landmarks_utils.utils.config_parser import load_config
 import os, sys
 import mlflow
 import mlflow.pytorch
 
 
-from ra_utils.training.landmarks.lib import (
+from landmarks_utils.training.landmarks.lib import (
     get_transforms, 
     train_epoch, val_epoch, train_loop,
     init_datahandler_from_config
 )
 
-import ra_utils.utils
-import ra_utils.utils.utils
+import landmarks_utils.utils
+import landmarks_utils.utils.utils
 
 
-from ra_utils.data.data_handler_landmarks_generic import DataHandler_CR_autoscoRA_generic
+from landmarks_utils.data.data_handler_landmarks_generic import DataHandler_CR_autoscoRA_generic
 
 def main():
     config = load_config(
-        default_config="/home/cwatzenboeck/code/RA/ra_utils/runs/config_landmarks/feet/F_train_landmarks_102_debugging.yaml",
+        default_config="/home/cwatzenboeck/code/RA/landmarks_utils/runs/config_landmarks/feet/F_train_landmarks_102_debugging.yaml",
         debugging_in_jupyter_nb=False, 
         silencium=False
     )
@@ -120,13 +120,13 @@ def main():
         os.environ["MLFLOW_TRACKING_URI"] = config["mlflow_runs_dir"]
 
     # ------------------------------
-    experiment_id = ra_utils.utils.utils_mlflow.get_or_create_experiment(
+    experiment_id = landmarks_utils.utils.utils_mlflow.get_or_create_experiment(
         config["experiment_name"])
 
     with mlflow.start_run(experiment_id=experiment_id, run_name=config["run_name"], nested=True):
         package_info_parameters = {
-            "package_infos -- ra_utils": ra_utils.utils.utils.package_infos(ra_utils),
-            "package_infos -- landmarker": ra_utils.utils.utils.package_infos(landmarker)
+            "package_infos -- landmarks_utils": landmarks_utils.utils.utils.package_infos(landmarks_utils),
+            "package_infos -- landmarker": landmarks_utils.utils.utils.package_infos(landmarker)
         }
         mlflow.log_params(package_info_parameters)
         
@@ -180,7 +180,7 @@ def main():
         dim_image = config["model_settings"]["dim_image"]
         train_transformd, inference_transformd = get_transforms(config)
 
-        ds_train, ds_test1, ds_test2 = ra_utils.data.dataloader_CR_landmarks.get_landmark_datasets(
+        ds_train, ds_test1, ds_test2 = landmarks_utils.data.dataloader_CR_landmarks.get_landmark_datasets(
             image_paths_train=image_paths_train,
             image_paths_test1=image_paths_test1,
             image_paths_test2=image_paths_test2,

@@ -7,8 +7,8 @@ A simple script to convert model predictions of landmarks to correct format for 
 
 import pandas as pd
 from pathlib import Path
-from  ra_utils.tools.landmark_annotation import make_df_double_scoring
-from  ra_utils.utils.config_parser import load_config
+from  landmarks_utils.tools.landmark_annotation import make_df_double_scoring
+from  landmarks_utils.utils.config_parser import load_config
 import argparse
 
 

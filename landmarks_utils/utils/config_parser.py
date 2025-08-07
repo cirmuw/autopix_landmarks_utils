@@ -55,7 +55,7 @@ def substitute_paths(obj: Any,
 
 
 
-def load_config(default_config="/home/cwatzenboeck/code/RA/ra_utils/runs/config_landmarks/train_landmarks_01.yaml",
+def load_config(default_config="/home/cwatzenboeck/code/RA/landmarks_utils/runs/config_landmarks/train_landmarks_01.yaml",
                 debugging_in_jupyter_nb=False, silencium=False, return_config_name=False, 
                 default_path_substitution_config=None):
 

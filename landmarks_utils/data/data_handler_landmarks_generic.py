@@ -20,9 +20,9 @@ import yaml
 import os
 
 
-import ra_utils
-import ra_utils.data.data_utils
-from ra_utils.data.data_utils import (
+import landmarks_utils
+import landmarks_utils.data.data_utils
+from landmarks_utils.data.data_utils import (
     extract_extras_from_filename, 
     extract_extras_from_abspath
 )
@@ -186,7 +186,7 @@ class DataHandler_CR_autoscoRA_generic(object):
         # *label* indices, not positional indices. Using df_subset.index preserves labels
         # even if the DataFrame index is non-consecutive after merges/filters.
         landmarks_list = [
-            ra_utils.data.data_utils.extract_landmarks_from_df(
+            landmarks_utils.data.data_utils.extract_landmarks_from_df(
                 df_subset, image_idx=i, landmark_names=landmark_names
             )
             for i in df_subset.index

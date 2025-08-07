@@ -49,19 +49,19 @@ import copy
 
 
 #   My stuff
-import ra_utils
-import ra_utils.data.data_utils
-from ra_utils.data.data_utils import (
+import landmarks_utils
+import landmarks_utils.data.data_utils
+from landmarks_utils.data.data_utils import (
     extract_extras_from_filename,
     extract_extras_from_abspath
 )
 
-import ra_utils.utils
-import ra_utils.visualization.plot_landmarks
-import ra_utils.data
-import ra_utils.data.data_handler
-import ra_utils.data.dataloader_CR_landmarks
-import ra_utils.utils.utils_mlflow
+import landmarks_utils.utils
+import landmarks_utils.visualization.plot_landmarks
+import landmarks_utils.data
+import landmarks_utils.data.data_handler
+import landmarks_utils.data.dataloader_CR_landmarks
+import landmarks_utils.utils.utils_mlflow
 import pydicom
 import numpy as np
 import pandas as pd
@@ -69,9 +69,9 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 
-from ra_utils.data.splits_utils import generate_split_dictionary
+from landmarks_utils.data.splits_utils import generate_split_dictionary
 
-from ra_utils.utils.config_parser import load_config
+from landmarks_utils.utils.config_parser import load_config
 import os
 import mlflow
 import mlflow.pytorch
@@ -240,12 +240,12 @@ def train_loop(
 
 
 
-import ra_utils.data.data_handler
+import landmarks_utils.data.data_handler
 #### Data:::
 def init_datahandler_from_config(config: dict, 
                                  base_dir="/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/"):
     base_dir = Path(base_dir)
-    dataHandler = ra_utils.data.data_handler.DataHandler_CR_autoscoRA(
+    dataHandler = landmarks_utils.data.data_handler.DataHandler_CR_autoscoRA(
         folder_H_images=base_dir / "autoscoRA_images/H_images_of_interest_2_renamed_mirrored_inverted_dicoms",
         folder_F_images=base_dir / "autoscoRA_images/F_images_of_interest_2_renamed_mirrored_inverted_dicoms",
         df_lm_labels_H=config.get("data_settings", {}).get("landmarks_csv_H",  "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/landmark_data/100_all_H_joints36/points_with_names.csv"),

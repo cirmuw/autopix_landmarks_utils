@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from typing import Union, List, Tuple
 from pathlib import Path
 
-import ra_utils.data.data_utils
+import landmarks_utils.data.data_utils
 
 
 
@@ -181,7 +181,7 @@ def plot_landmarks_from_df(dfm, image_idx=0):
     """
     # Extract image path and landmarks
     image_path = dfm["image"].iloc[image_idx]
-    landmarks = ra_utils.data.data_utils.extract_landmarks_from_df(dfm, image_idx)
+    landmarks = landmarks_utils.data.data_utils.extract_landmarks_from_df(dfm, image_idx)
 
     # Plot the image with landmarks
     return plot_landmarks(image_path, landmarks)

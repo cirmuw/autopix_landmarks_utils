@@ -18,7 +18,7 @@ from tqdm import tqdm
 import re
 from typing import Tuple
 
-#from ra_utils.data.crawler_helpers import scantree, get_and_maybe_save_crawler_data
+#from landmarks_utils.data.crawler_helpers import scantree, get_and_maybe_save_crawler_data
 
 
 

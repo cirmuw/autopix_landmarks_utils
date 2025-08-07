@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pydicom
 from pathlib import Path
-from ra_utils.annotation.point_annotator import point_annotator
+from landmarks_utils.annotation.point_annotator import point_annotator
 
 # === CONFIGURATION ===
 def main():

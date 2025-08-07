@@ -53,19 +53,19 @@ import landmarker.data.landmark_dataset
 from landmarker.data.landmark_dataset import LandmarkDatasetOnTheFly
 
 #   My stuff
-import ra_utils
-import ra_utils.data.data_utils
-from  ra_utils.data.data_utils import (
+import landmarks_utils
+import landmarks_utils.data.data_utils
+from  landmarks_utils.data.data_utils import (
     extract_extras_from_filename, 
     extract_extras_from_abspath
 )
 
-import ra_utils.visualization.plot_landmarks
-import ra_utils.data
-import ra_utils.data.data_handler
-import ra_utils.data.dataloader_CR_landmarks
-import ra_utils.visualization.plot_landmarks #.plot_landmarks
-import ra_utils.data.data_utils
+import landmarks_utils.visualization.plot_landmarks
+import landmarks_utils.data
+import landmarks_utils.data.data_handler
+import landmarks_utils.data.dataloader_CR_landmarks
+import landmarks_utils.visualization.plot_landmarks #.plot_landmarks
+import landmarks_utils.data.data_utils
 import pydicom
 import numpy as np
 
@@ -77,23 +77,23 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 
-from ra_utils.data.splits_utils import generate_split_dictionary
+from landmarks_utils.data.splits_utils import generate_split_dictionary
 
 import mlflow
 from mlflow.tracking import MlflowClient
 import yaml
 import mlflow.pytorch
 
-from ra_utils.utils.config_parser import load_config
+from landmarks_utils.utils.config_parser import load_config
 import os 
 from landmarker.heatmap.decoder import heatmap_to_coord
 from landmarker.metrics import point_error
 
-import ra_utils.inference
-import ra_utils.inference.landmarks_inference_utils
+import landmarks_utils.inference
+import landmarks_utils.inference.landmarks_inference_utils
 
 from pprint import pprint
-from ra_utils.utils.config_parser import load_config
+from landmarks_utils.utils.config_parser import load_config
 import mlflow
 import mlflow.pytorch
 
@@ -134,7 +134,7 @@ def load_models_and_settings(config):
 
 def main():
 
-    config = load_config(default_config="/home/cwatzenboeck/code/RA/ra_utils/runs/config_landmarks/inference/F_inference.yaml",
+    config = load_config(default_config="/home/cwatzenboeck/code/RA/landmarks_utils/runs/config_landmarks/inference/F_inference.yaml",
                         debugging_in_jupyter_nb=False,
                         silencium=False)
 
@@ -166,7 +166,7 @@ def main():
     ])
 
     # Filter out the paths which lead to an error
-    image_paths, image_paths_errors = ra_utils.data.data_utils.filter_image_paths(image_paths)
+    image_paths, image_paths_errors = landmarks_utils.data.data_utils.filter_image_paths(image_paths)
     print(f"Filtered image paths: {len(image_paths) = }")
     print(f"Filtered image paths: {len(image_paths_errors) = }")
     print(f"Filtered image paths: {image_paths_errors = }")
@@ -199,7 +199,7 @@ def main():
 
 
     (all_pred_landmarks, all_pred_landmarks_transformed, all_dim_origs, all_pixel_spacings, all_paddings
-    ) = ra_utils.inference.landmarks_inference_utils.predict_landmarks(model, loader, device="cuda")
+    ) = landmarks_utils.inference.landmarks_inference_utils.predict_landmarks(model, loader, device="cuda")
     
     
     

@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-import ra_utils
+import landmarks_utils
 
 import landmarker
 from landmarker.data import LandmarkDataset, LandmarkDatasetOnTheFly
