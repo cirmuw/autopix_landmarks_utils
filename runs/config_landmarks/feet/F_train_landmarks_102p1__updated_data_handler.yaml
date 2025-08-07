@@ -1,0 +1,39 @@
+project: "Autopix: SvH"
+experiment_name: "landmarks F"
+tag: "development"
+run_name: "516-42-19_g40 a0.03 es100 02 (correct order)" # F
+
+SAVE_MODEL: False 
+debugging: True    # change mlflow output directory 
+
+mlflow_runs_dir: "/home/cwatzenboeck/data/mlflow_cirpc_tmp/RA/data/"
+
+data_settings: 
+  df_autoscoRA_labels_header: "infer" 
+  training_test_splits_json: "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/landmark_data/splits/new_splits_nbodner/splits_F_TD-580_different_val_set.yml"
+  landmarks_csv: "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/tabular_data_cw/annotation_dir/combined_results/out/F_TD_and_00-05.csv"
+  folder_images: "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/autoscoRA_images/F_images_of_interest_2_renamed_mirrored_inverted_dicoms"
+
+model_settings: 
+  dim_image: [512,512]
+  gamma: 40
+  alpha: 0.037037037037037035   # part of loss function for learnable sigmas  1 / 37 = 0.02702702702702703;  1/27 = 0.037037037037037035   1/43 = 0.023255813953488372
+
+  heatmap_sigma: 5.0  
+  learnable_sigmas: True
+
+  # should be somewhere else... but I dont want to change it now... 
+  get_pixel_spacing: True
+  pixel_spacing_default: [0.14, 0.14]  # should be [0.141, 0.141] but in original runs I used 0.1,0.1 -> keep for comparison
+
+training_parameters: 
+  RandAdjustContrast_gamma_lower: 0.7
+  RandAdjustContrast_gamma_upper: 2.5
+  optimizer: "adamW"
+
+  lr: 1.0e-5
+  batch_size: 2
+  epochs: 1000
+
+
+  early_stopping_patience: 100
