@@ -35,12 +35,12 @@ pip install -e .
 #### How to use: 
 ##### Annotation
 
-Highlights of the provided utility functions are a usefull tool to create point-annotations build with `napari`.
+Highlights of the provided utility functions are a useful tool to create point-annotations build with `napari`.
 
 After installation and updating the example config files (see `runs/config_/_annotation/config_H.yaml`) it can be stated with
 
 ```bash
-  ra_utils__annotate_landmarks  --config /path/to/runs/config/annotation/config_H.yaml
+  landmarks_utils__annotate_landmarks  --config /path/to/runs/config/annotation/config_H.yaml
 ```
 
 This will start the UI for the annotation. 
@@ -54,7 +54,7 @@ This will start the UI for the annotation.
 Update the config in `./runs/config_landmarks/hands/H_train_landmarks_102p1__updated_data_handler.yaml`
 
 ```bash
-python ~/code/RA/ra_utils/landmarks_utils/training/landmarks/01_train_mlflow.py  \
+python ~/code/RA/landmarks_utils/landmarks_utils/training/landmarks/01_train_mlflow.py  \
    --config  `./runs/config_landmarks/hands/H_train_landmarks_102p1__updated_data_handler.yaml
 ```
 
