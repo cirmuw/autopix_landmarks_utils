@@ -1,0 +1,52 @@
+file_paths_csv: "/home/clemens/code/RA/landmarks_utils/documentation/DEMO_annotation/data_0_F_tr.csv"
+save_dst_dir: "/home/clemens/code/RA/landmarks_utils/documentation/DEMO_annotation/out_F/"
+
+LANDMARK_NAMES:
+ - 'TMT1-D'
+ - 'MTB1'
+ - 'MTP1-P'
+ - 'MTP1-D'
+ - 'FIP1-P'
+ - 'FIP1-D'
+ - 'FDP1-P'
+ - 'TMT2-D'
+ - 'MTB2'
+ - 'MTP2-P'
+ - 'MTP2-D'
+ - 'FIP2-P'
+ - 'TMT3-D'
+ - 'MTB3'
+ - 'MTP3-P'
+ - 'MTP3-D'
+ - 'FIP3-P'
+ - 'TMT4-D'
+ - 'MTB4'
+ - 'MTP4-P'
+ - 'MTP4-D'
+ - 'FIP4-P'
+ - 'TMT5-D'
+ - 'MTB5'
+ - 'MTP5-P'
+ - 'MTP5-D'
+ - 'FIP5-P'
+
+
+## The base path in the table (specified in file_paths_csv) was set to a different computer. One can either change it in the table or use the "re-rooting" functionality below
+reroot_file_path_dir__from: "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/autoscoRA_images/F_images_of_interest_2_renamed_mirrored_inverted_dicoms/"
+reroot_file_path_dir__to: "/home/clemens/data/AutoPIX_cirdata/projects__autoscora/autoscoRA_images/F_images_of_interest_2_renamed_mirrored_inverted_dicoms/"
+
+# We can also train an model consecutively and annotatiors only correct the labels 
+# This can be done with the script: ./landmarks_utils/tools/landmark_annotation_prepopulation.py --config <this_config_file.yaml>
+prepopulation_file: "/home/clemens/data/AutoPIX_cirdata/projects__autoscora/landmark_data/output/F_coordinates__50Tr_715f7467a22945f580262b2aadbc62af_with_lm_names.csv"
+# prepopulation_file: "/home/clemens/data/AutoPIX_cirdata/projects__autoscora/landmark_data/output/F_coordinates__130Tr_e71d80c674a9406d8b06600fe386ffed_with_lm_names.csv"
+
+
+# Add the Ground Truth. 
+#  Some cases were already annotated by a doctor. 
+#  If this is set the ground trouth labels can be shown (read only) by pressing 'g'
+#  This is usefull for training a new annotator. 
+#  Note that in this case the table specified in `file_paths_csv` also needs to contain the correponding labels
+AddGT: True
+
+
+

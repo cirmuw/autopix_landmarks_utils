@@ -1,0 +1,55 @@
+file_paths_csv: "/home/clemens/code/RA/landmarks_utils/documentation/DEMO_annotation/data_0_H_tr.csv"
+save_dst_dir: "/home/clemens/code/RA/landmarks_utils/documentation/DEMO_annotation/out_H"
+
+reroot_file_path_dir__from: "/home/cwatzenboeck/data/AutoPIX_cirdata/projects__autoscora/autoscoRA_images/H_images_of_interest_2_renamed_mirrored_inverted_dicoms/"
+reroot_file_path_dir__to: "/home/clemens/data/AutoPIX_cirdata/projects__autoscora/autoscoRA_images/H_images_of_interest_2_renamed_mirrored_inverted_dicoms/"
+
+
+AddGT: True
+
+LANDMARK_NAMES:
+  - 'WRC'
+  - 'CMC1-D'
+  - 'MCB1'
+  - 'MCP1-P'
+  - 'MCP1-D'
+  - 'PIP1-P' 
+  - 'PIP1-D' 
+  - 'DIP1-P' 
+  - 'CMC2-D' 
+  - 'MCB2' 
+  - 'MCP2-P' 
+  - 'MCP2-D' 
+  - 'PIP2-P' 
+  - 'PIP2-D' 
+  - 'DIP2-P' 
+  - 'CMC3-D' 
+  - 'MCB3' 
+  - 'MCP3-P'
+  - 'MCP3-D'
+  - 'PIP3-P'
+  - 'PIP3-D'
+  - 'DIP3-P'
+  - 'CMC4-D'
+  - 'MCB4'
+  - 'MCP4-P'
+  - 'MCP4-D'
+  - 'PIP4-P'
+  - 'PIP4-D'
+  - 'DIP4-P'
+  - 'CMC5-D'
+  - 'MCB5'
+  - 'MCP5-P'
+  - 'MCP5-D'
+  - 'PIP5-P'
+  - 'PIP5-D'
+  - 'DIP5-P' 
+# New labels
+  - 'UL-P'
+  - 'UL-B'
+  - 'RAD-P'
+  - 'RAD-B'
+  - 'LUN'
+  - 'SCP'
+
+
