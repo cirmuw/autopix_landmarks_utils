@@ -89,26 +89,27 @@ rpackages = [
 requires = ["setuptools>=67.8.0", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-include = ["landmarks_utils"]
-exclude = [
-    "docs",
-    "documentation",
-    "logs",
-    "notebooks",
-    "references",
-    "singularity",
-    "slurm",
-    "tests",
-    "tutorials",
-    "data",
-    "features",
-    "inference",
-    "networks",
-    "training",
-    "utils",
-    "visualization", 
-]
+#[tool.setuptools.packages.find]
+#where = ["."]
+## include = ["landmarks_utils"]
+#exclude = [
+#    "docs",
+#    "documentation",
+#    "logs",
+#    "notebooks",
+#    "references",
+#    "singularity",
+#    "slurm",
+#    "tests",
+#    "tutorials",
+#    "data",
+#    "features",
+#    "inference",
+#    "networks",
+#    "training",
+#    "utils",
+#    "visualization", 
+#]
 
 [tool.setuptools_scm]
 write_to = "landmarks_utils/_version.py"

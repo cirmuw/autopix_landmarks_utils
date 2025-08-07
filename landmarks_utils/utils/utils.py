@@ -17,7 +17,9 @@ import pydoc
 
 
 def get_package_rootdir(package, level=1):
-    # Note: this will only work with level=1 if the git repo has the standard structure
+    if not hasattr(package, "__file__") or package.__file__ is None:
+        raise ValueError(f"Cannot determine root dir: package {package.__name__} has no __file__ attribute. The package: {package} might not be properly installed!")
+    
     path = Path(os.path.abspath(package.__file__))
     return path.parents[level]
 

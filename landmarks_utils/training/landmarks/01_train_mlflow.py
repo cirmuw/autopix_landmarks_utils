@@ -126,7 +126,7 @@ def main():
     with mlflow.start_run(experiment_id=experiment_id, run_name=config["run_name"], nested=True):
         package_info_parameters = {
             "package_infos -- landmarks_utils": landmarks_utils.utils.utils.package_infos(landmarks_utils),
-            "package_infos -- landmarker": landmarks_utils.utils.utils.package_infos(landmarker)
+            "package_infos -- landmarker": landmarks_utils.utils.utils.package_infos(landmarker, level=2)
         }
         mlflow.log_params(package_info_parameters)
         
