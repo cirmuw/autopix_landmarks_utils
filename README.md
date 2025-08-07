@@ -47,11 +47,9 @@ This will start the UI for the annotation.
 
 #### 🖼️ Demo
 
-#### 🖼️ Demos
-
-- [Annotation Demo 1](documentation/annotation_demo_v1.md)
-- [Annotation Demo 2](documentation/annotation_demo_v2.md)
-- [Annotation Demo 3 – With Ground Truth](documentation/annotation_demo_v3.md)
+- [Annotation Demo 1: Basic point annotations](./documentation/annotation_demo1.md)
+- [Annotation Demo 2: Updating predictions of the model](./documentation/annotation_demo2.md)
+- [Annotation Demo 3: Training annotators and checking against ground truth](./documentation/annotation_demo3.md)
 
 
 
