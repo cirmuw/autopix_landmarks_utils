@@ -59,7 +59,6 @@ from landmarks_utils.data.data_utils import (
 import landmarks_utils.utils
 import landmarks_utils.visualization.plot_landmarks
 import landmarks_utils.data
-import landmarks_utils.data.data_handler
 import landmarks_utils.data.dataloader_CR_landmarks
 import landmarks_utils.utils.utils_mlflow
 import pydicom
@@ -69,8 +68,6 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 
-from landmarks_utils.data.splits_utils import generate_split_dictionary
-
 from landmarks_utils.utils.config_parser import load_config
 import os, sys
 import mlflow
@@ -79,8 +76,7 @@ import mlflow.pytorch
 
 from landmarks_utils.training.landmarks.lib import (
     get_transforms, 
-    train_epoch, val_epoch, train_loop,
-    init_datahandler_from_config
+    train_loop,
 )
 
 import landmarks_utils.utils
