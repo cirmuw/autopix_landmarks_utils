@@ -76,11 +76,21 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 
 ---
 
+
+
 ## 📌 Annotation Examples
 
-| F-case | F-case | H-case | H-case |
-| :---: | :---: | :---: | :---: |
-| ![F sample 1](./documentation/images/annoation_F_sample_01.png) | ![F sample 2](./documentation/images/annoation_F_sample_02.png) | ![H sample 1](./documentation/images/annoation_H_sample_01.png) | ![H sample 2](./documentation/images/annoation_H_sample_02.png) |
+<img src="./documentation/images/annoation_F_sample_01.png" width="600"/>  
+<img src="./documentation/images/annoation_F_sample_02.png" width="600"/>  
+<img src="./documentation/images/annoation_H_sample_01.png" width="600"/>  
+<img src="./documentation/images/annoation_H_sample_02.png" width="600"/>  
+
+---
+
+## 🗂️ Patch Extraction Examples
+
+<img src="./documentation/images/patch_F_STP1_sample01.png" width="600"/>  
+<img src="./documentation/images/patch_H_sample01.png" width="600"/>  
 
 ---
 
@@ -90,17 +100,10 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 - [Annotation Demo 2: Updating predictions of the model](./documentation/annotation_demo2.md)
 - [Annotation Demo 3: Training annotators and checking against ground truth](./documentation/annotation_demo3.md)
 
-
-
-
-
-## 🗂️ Patch Extraction Examples
-
-| F-patch | H-patch |
-| :---: | :---: |
-| ![F patch S-TP1](./documentation/images/patch_F_STP1_sample01.png) | ![H patch](./documentation/images/patch_H_sample01.png) |
-
 ---
+
+
+
 
 ## 📈 Metrics & Results
 
