@@ -72,8 +72,6 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 ```
 
 
-
-
 ---
 
 
@@ -87,13 +85,6 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 
 ---
 
-## 🗂️ Patch Extraction Examples
-
-<img src="./documentation/images/patch_F_STP1_sample01.png" width="600"/>  
-<img src="./documentation/images/patch_H_sample01.png" width="600"/>  
-
----
-
 ## 🖼️ Demo
 
 - [Annotation Demo 1: Basic point annotations](./documentation/annotation_demo1.md)
@@ -102,10 +93,22 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 
 ---
 
+## 🗂️ Patch Extraction Examples
 
+- [Patch Extraction](./documentation/patch_extraction_examples.md)
+
+<!--
+<img src="./documentation/images/patch_cropped_F_example01.png" width="600"/>  
+<img src="./documentation/images/patch_cropped_H_example01.png" width="600"/>  
+--->
+
+---
 
 
 ## 📈 Metrics & Results
+
+See [notebook feet eval](./nb/landmarks_evaluation/eval_landmarker_02a_reload_F_c580.ipynb) and [notebook hands eval](./nb/landmarks_evaluation/eval_landmarker_02a_reload_H_c580.ipynb).
+
 
 | CPE Curves (F) | CPE Curves (H) |
 | :---: | :---: |
@@ -114,6 +117,7 @@ python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/land
 | SDR (F) | SDR (H) |
 | :---: | :---: |
 | ![SDR F](./documentation/results/SDR_F_2025-08-07.png) | ![SDR H](./documentation/results/SDR_H_2025-08-07.png) |
+
 
 ---
 
