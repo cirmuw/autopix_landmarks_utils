@@ -1,5 +1,9 @@
 ### Landmarks Annotation Demo 1
 
+
+![Annotation Demo](./images/DEMO_annotation_basics.gif)
+
+
 📊 **Example Table Format**:
 
 
