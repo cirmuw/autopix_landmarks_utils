@@ -89,6 +89,17 @@ rpackages = [
 requires = ["setuptools>=67.8.0", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+include = ["landmarks_utils*"]
+exclude = [
+    "nb*",
+    "runs*",
+    "notebooks*",
+    "tests*",
+    "data*",
+    "docs*",
+]
+
 #[tool.setuptools.packages.find]
 #where = ["."]
 ## include = ["landmarks_utils"]
