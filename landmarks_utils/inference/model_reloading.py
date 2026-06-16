@@ -2,6 +2,24 @@
 import mlflow
 from mlflow.tracking import MlflowClient
 import os
+import torch 
+
+
+
+def get_device(requested_device: str | None = None) -> torch.device:
+    if requested_device is not None:
+        requested_device = requested_device.lower()
+
+    if requested_device in {None, "auto"}:
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    if requested_device == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError(
+            "CUDA was requested, but torch.cuda.is_available() is False. "
+            "Use device=cpu or install a PyTorch build compatible with the NVIDIA driver."
+        )
+
+    return torch.device(requested_device)
 
 
 def load_models_and_settings(config):
@@ -17,9 +35,10 @@ def load_models_and_settings(config):
         model = mlflow.pytorch.load_model(logged_model_uri)
         model.eval()
 
+        device = get_device(getattr(config, "device", "auto"))
         heatmap_generator_artifact_name = config["model"].get("heatmap_generator_artifact_name", "best_heatmap_generator")
         logged_heatmap_uri = f"runs:/{run_id}/{heatmap_generator_artifact_name}"
-        heatmap_generator = mlflow.pytorch.load_model(logged_heatmap_uri)
+        heatmap_generator = mlflow.pytorch.load_model(logged_heatmap_uri, map_location=device)
         heatmap_generator.eval();
 
 

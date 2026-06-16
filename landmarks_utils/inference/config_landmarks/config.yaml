@@ -8,9 +8,10 @@ defaults:
 
 
 debugging: False  # Just run on first 10 cases
-
+device: cuda  #  cuda -> force gpu, cpu -> force cpu  ; auto -> auto_determine  
+overwrite_output: false
 
 dcm_file: null  # MUST BE SET
-output_dst: null # if null it will be automatically generated as ({file_name}_landmarks_{extremity}.csv)
+output_dst: null # if null it is generated next to dcm_file as ({file_name}_landmarks_{extremity}.csv)
 
 

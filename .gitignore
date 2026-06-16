@@ -1,3 +1,7 @@
+runs
+
+*.ipynb
+
 documentation/DEMO_annotation/*.csv  
 
 ._*
