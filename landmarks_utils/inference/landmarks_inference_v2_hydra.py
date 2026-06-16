@@ -1,100 +1,46 @@
 
-#%%
+import os 
 import numpy as np
 import pandas as pd
-import torch
-import pydicom
 import matplotlib.pyplot as plt
-
 from pathlib import Path
-import argparse
 
 # MONAI imports
 import monai
-from monai.data import Dataset, CacheDataset, DataLoader, PILReader
-from monai.transforms import (
-    LoadImage, LoadImaged, Resized, Compose, SaveImage, 
-    Spacingd, SpatialCropd, ResizeWithPadOrCropd
-)
+from monai.data import DataLoader
+from monai.transforms import ( Compose)
 
 import numpy as np
 from monai.transforms import (
     Compose,
-    LoadImaged,
     Transposed,
-    NormalizeIntensityd,
-    MapTransform,
-    ScaleIntensityRangePercentilesd,
-    RandAffined, RandGaussianNoised, 
-    RandStdShiftIntensityd, RandScaleIntensityd, RandAdjustContrastd, RandHistogramShiftd,
-    ScaleIntensityd, Lambdad,
-    LoadImage, Transpose
+    ScaleIntensityd
 )
-
-from torch.utils.data import DataLoader
-from tqdm.notebook import tqdm
-
-
-
-import landmarker
-import landmarker.datasets
-from landmarker.datasets import get_cepha_landmark_datasets
-from landmarker.heatmap import GaussianHeatmapGenerator, LaplacianHeatmapGenerator
-from landmarker.models import OriginalSpatialConfigurationNet
-from landmarker.losses import GaussianHeatmapL2Loss
-from torch.utils.data import DataLoader
-from landmarker.visualize import inspection_plot
-from landmarker.visualize.utils import prediction_inspect_plot, prediction_inspect_plot_transposed, inspection_plot_numbers
-from landmarker.visualize import detection_report
-from landmarker.visualize.evaluation import detection_report, convert_to_report_df, evaluate_model_on_loader
-from landmarker.data import LandmarkDataset
 
 import landmarker.data.landmark_dataset
 from landmarker.data.landmark_dataset import LandmarkDatasetOnTheFly
-
-#   My stuff
 import landmarks_utils
 import landmarks_utils.data.data_utils
 
-
-import landmarks_utils.data
-import landmarks_utils.data.data_utils
-import pydicom
-import numpy as np
-
-import pydicom
-import numpy as np
-import pandas as pd
-
-
-import numpy as np
-from sklearn.model_selection import KFold
-
-import mlflow
-from mlflow.tracking import MlflowClient
-import yaml
-import mlflow.pytorch
-
-from landmarks_utils.utils.config_parser import load_config
-import os 
-from landmarker.heatmap.decoder import heatmap_to_coord
-from landmarker.metrics import point_error
 
 import landmarks_utils.inference
 import landmarks_utils.inference.landmarks_inference_utils
 
 from pprint import pprint
-from landmarks_utils.utils.config_parser import load_config
-import mlflow
-import mlflow.pytorch
+import hydra 
+from omegaconf import DictConfig, OmegaConf
 from landmarks_utils.inference.model_reloading import load_models_and_settings
 
 
-def main():
-
-    config = load_config(default_config="/home/cwatzenboeck/code/RA/landmarks_utils/runs/config_landmarks/inference/F_inference.yaml",
-                        debugging_in_jupyter_nb=False,
-                        silencium=False)
+    
+@hydra.main(version_base=None, config_path="config_landmarks", config_name="F_inference_580_cases")
+def main(config : DictConfig) -> None:
+    print(OmegaConf.to_yaml(config))
+    
+    
+    # config = load_config(default_config="/home/cwatzenboeck/code/RA/landmarks_utils/runs/config_landmarks/inference/F_inference.yaml",
+    #                     debugging_in_jupyter_nb=False,
+    #                     silencium=False)
 
     model, heatmap_generator, settings = load_models_and_settings(config)
     N_landmarks = settings["N_landmarks"]

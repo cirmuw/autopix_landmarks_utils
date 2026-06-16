@@ -1,0 +1,16 @@
+# #################################################################
+# #####################       Defaults         ####################
+# #################################################################
+
+defaults: 
+  - model: model_F_mlflow # model_H_mlflow or model_F_mlflow
+  - _self_
+
+
+debugging: False  # Just run on first 10 cases
+
+
+dcm_file: null  # MUST BE SET
+output_dst: null # if null it will be automatically generated as ({file_name}_landmarks_{extremity}.csv)
+
+

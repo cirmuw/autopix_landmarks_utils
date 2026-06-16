@@ -1,0 +1,8 @@
+
+reload_from_state_dict: False
+mlflow_runs_dir:  "/home/cwatzenboeck/data/mlflow_cirpc_tmp/RA/data/"
+#mlflow_runs_dir: "/home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/model_weights/mlflow_run_dir" 
+run_id: "26bcf8c226ae4c35b96ff9f9b7150797"
+model_artifact_name: "best_model"  #  "final_model" or "best_model"
+heatmap_generator_artifact_name: "best_heatmap_generator"  # "final_heatmap_generator"  "best_heatmap_generator"
+extremity: "H" # just for convenience # do not overwrite this
