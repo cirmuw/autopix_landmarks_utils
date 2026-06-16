@@ -54,7 +54,7 @@ dependencies = [
     "mlflow",
     "pingouin",
     # "landmarker",
-    "landmarker @ https://github.com/ClemensWatzenboeck/landmarker.git",
+    "landmarker @  @ git+https://github.com/ClemensWatzenboeck/landmarker.git",
     "omegaconf",
     "hydra-core",
     "optuna", 
