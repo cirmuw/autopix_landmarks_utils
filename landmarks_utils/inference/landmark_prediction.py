@@ -60,7 +60,10 @@ def predict_from_image_paths(config, image_paths: Sequence[str]) -> pd.DataFrame
 
     ds = LandmarkDatasetOnTheFly(
         image_paths,
-        _build_dummy_landmarks(num_images=len(image_paths), num_landmarks=num_landmarks),
+        _build_dummy_landmarks(num_images=len(image_paths), num_landmarks=num_landmarks),  
+          #^^ Unit vectors for the landmarks (needed). Because there was a weird shift (flip, ... ) anyhow, 
+          # just a linear transformation which I could undo. this way. 
+          #    reconstruct_linear_2D_transform_from_unit_vectors  called inside
         pixel_spacing=None,
         transform=build_inference_transform(),
         dim_img=dim_image,

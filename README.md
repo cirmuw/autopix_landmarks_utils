@@ -22,9 +22,10 @@ conda create -n landmark_env python=3.9
 conda activate landmark_env
 
 # Step 3: Clone and install the modified landmarker fork
-git clone https://github.com/ClemensWatzenboeck/landmarker.git  /path/to/your/local/code/landmarker 
-cd /path/to/your/local/code/landmarker
-pip install -e .
+#git clone https://github.com/ClemensWatzenboeck/landmarker.git  /path/to/your/local/code/landmarker 
+#cd /path/to/your/local/code/landmarker
+#pip install -e .
+## Resolved -> Now in pyproject.toml
 
 # Step 4: Install this package (landmarks_utils)
 cd /path/to/your/landmarks_utils
@@ -69,6 +70,59 @@ Insert mlflow `runid` of the trained model, path to data, ...
 ```bash
 python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/landmarks_inference_v2.py  \
    --config  `./runs/config_landmarks/inference/H_inference_580_cases.yaml
+```
+
+##### Inference with updated code: 
+I refactored the code. It now uses hydra for the config. 
+The same functionality as before can be achieved via: 
+
+
+```bash 
+python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/landmarks_folder_hydra.py \
+  --config-path config_landmarks \
+  --config-name F_inference_580_cases_dev \
+    output_dst="/home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/dev_dir/output_dir/tmp_landmarks_multi_F_V2/" \
+    hydra.run.dir=.  \
+    hydra.output_subdir=null 
+```
+
+The config files for reloading the model are there. [./landmarks_utils/inference/config_landmarks/](./landmarks_utils/inference/config_landmarks/). 
+
+The goal of the refactor was to allow for a simple inference from just a single image from the command line. So that the whole thing be put into one neat pipeline. 
+
+*** CLI for single image inference ***
+```bash 
+dcm_file="/path/to/AUTOPIX_000017_20170505_F_R_dp_MTwo.dcm"
+
+
+python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/inference/landmarks_single_hydra.py \
+  --config-path config_landmarks \
+  --config-name config \
+  model=model_F_mlflow \
+  dcm_file="${dcm_file}"
+
+# Optional: add also   output_dst=/path/to/output/folder
+```
+This will create `lm_file="/path/to/AUTOPIX_000017_20170505_F_R_dp_MTwo_landmarks_F.csv`
+
+To reload the hands model instead simply give `model=model_H_mlflow` to the CLI. 
+
+**Hint:**  The currently trained models assume that right extremities were mirrored and that all is mapped to MONOCHROME1-> MONOCHROME2. This can be done fully automatically with the code of the pipeline. 
+See: [https://gitlab.cir.meduniwien.ac.at:8888/cwatzenboeck/autopix_muw_x_ray_pipeline](autopix_muw_x_ray_pipeline).
+
+```bash 
+python /home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/cr_pipeline/preprocessing__x_ray_maybe_flip_and_monochrome.py \
+        --image  "${img_F_R_dp}" \
+        --output_path  "${out_dir}" \
+        --verbose  --link_if_no_change
+```
+
+##### Plotting 
+This visualizes the landmarks. 
+```bash 
+python /home/cwatzenboeck/code/RA/landmarks_utils/landmarks_utils/visualization/plot_landmarks.py \
+  --landmarks_csv "${lm_file}" \
+  #--idx=0   # default anyhow. 
 ```
 
 

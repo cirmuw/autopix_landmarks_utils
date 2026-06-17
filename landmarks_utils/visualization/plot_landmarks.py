@@ -3,6 +3,7 @@ import pandas as pd
 import torch
 import pydicom
 import matplotlib.pyplot as plt
+import argparse
 from typing import Union, List, Tuple
 from pathlib import Path
 
@@ -185,3 +186,69 @@ def plot_landmarks_from_df(dfm, image_idx=0):
 
     # Plot the image with landmarks
     return plot_landmarks(image_path, landmarks)
+
+
+def _infer_landmark_names(dfm: pd.DataFrame) -> List[str] | None:
+    """Infer landmark base names from DataFrame columns."""
+    not_lm_columns = ["image_path", "img"]
+    lm_columns = [c for c in dfm.columns if c not in not_lm_columns]
+    
+    
+    x_cols = [col for col in lm_columns if col.endswith("-X")]
+    y_cols = [col for col in lm_columns if col.endswith("-Y")]
+    missed = (set(lm_columns) - set(x_cols)) - set(y_cols)
+    if len(missed) != 0: 
+        print(" WARNING::: There are missed unexpected columns in the csv file!!")
+    
+    if x_cols:
+        return [col[:-2] for col in x_cols]
+
+    xy_cols = [col[:-2] for col in x_cols]
+    if xy_cols:
+        return xy_cols
+
+    return None
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Plot landmarks from a CSV file.")
+    #parser.add_argument("--landmarks_csv", type=str, required=True, help="Path to landmarks CSV file.")
+    # Debugging:
+    parser.add_argument("--landmarks_csv", 
+                        type=str, required=False, 
+                        default="/home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/dev_dir/output_dir/AUTOPIX_000017_20170505_F_L_dp_MTwo_landmarks_F.csv",
+                        help="Path to landmarks CSV file.")
+    
+    parser.add_argument("--idx", type=int, default=0, help="Row index in CSV to plot.")
+
+    
+    
+
+    args = parser.parse_args()
+
+    df_landmarks = pd.read_csv(args.landmarks_csv)
+    landmark_names = _infer_landmark_names(df_landmarks)
+
+    if landmark_names:
+        landmarks = landmarks_utils.data.data_utils.extract_landmarks_from_df(
+            df_landmarks,
+            image_idx=args.idx,
+            landmark_names=landmark_names,
+        )
+        label_names = landmark_names
+    else:
+        landmarks = landmarks_utils.data.data_utils.extract_landmarks_from_df(
+            df_landmarks,
+            image_idx=args.idx,
+        )
+        label_names = [str(i) for i in range(len(landmarks))]
+
+
+    image_path = df_landmarks["image_path"].iloc[args.idx]
+    plot_landmarks(
+        image=image_path,
+        landmarks=landmarks,
+        annotate=True,
+        landmark_labels=label_names,
+    )
+    plt.show()
