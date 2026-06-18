@@ -68,11 +68,20 @@ dependencies = [
 ]
 
 [project.scripts]
+# BASIC::
 landmarks_utils__print_package_infos = "landmarks_utils.tools.print_package_info:main"
+# ANNOTATION::
 landmarks_utils__annotate_landmarks = "landmarks_utils.tools.landmark_annotation:main"
 landmarks_utils__annotate_landmarks_prepopulation = "landmarks_utils.tools.landmark_annotation_prepopulation:main"
 landmarks_utils__annotate_landmarks_combine_annotations = "landmarks_utils.tools.landmark_annotation_combine_annotations:main"
 landmarks_utils__annotate_landmarks_consistency_check = "landmarks_utils.tools.landmark_annotation_check_consistency:main"
+
+# INFERENCE
+landmarks_utils__predict_single_image = "landmarks_utils.inference.landmarks_single_hydra:main"
+landmarks_utils__predict_folder = "landmarks_utils.inference.landmarks_folder_hydra:main"
+
+# PLOTS:
+landmarks_utils__plot_landmarks = "landmarks_utils.visualization.plot_landmarks:main"
 
 [project.optional-dependencies]
 dev = [

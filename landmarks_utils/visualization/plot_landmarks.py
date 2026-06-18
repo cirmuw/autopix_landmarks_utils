@@ -211,7 +211,7 @@ def _infer_landmark_names(dfm: pd.DataFrame) -> List[str] | None:
     return None
 
 
-def main(args: SimpleNamespace):
+def main_no_argparser(args: SimpleNamespace):
 
     df_landmarks = pd.read_csv(args.landmarks_csv)
     landmark_names = _infer_landmark_names(df_landmarks)
@@ -240,10 +240,7 @@ def main(args: SimpleNamespace):
     )
     return fig
     
-
-
-
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Plot landmarks from a CSV file.")
     #parser.add_argument("--landmarks_csv", type=str, required=True, help="Path to landmarks CSV file.")
     # Debugging:
@@ -257,5 +254,10 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args = SimpleNamespace(**args.__dict__)
-    fig = main(args)
-    plt.show()
+    fig = main_no_argparser(args)
+    plt.show()      
+
+
+if __name__ == "__main__":
+    main()
+    print("Done")
