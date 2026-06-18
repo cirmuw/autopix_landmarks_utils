@@ -8,6 +8,7 @@ from typing import Union, List, Tuple
 from pathlib import Path
 
 import landmarks_utils.data.data_utils
+from types import SimpleNamespace
 
 
 
@@ -210,21 +211,7 @@ def _infer_landmark_names(dfm: pd.DataFrame) -> List[str] | None:
     return None
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Plot landmarks from a CSV file.")
-    #parser.add_argument("--landmarks_csv", type=str, required=True, help="Path to landmarks CSV file.")
-    # Debugging:
-    parser.add_argument("--landmarks_csv", 
-                        type=str, required=False, 
-                        default="/home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/dev_dir/output_dir/AUTOPIX_000017_20170505_F_L_dp_MTwo_landmarks_F.csv",
-                        help="Path to landmarks CSV file.")
-    
-    parser.add_argument("--idx", type=int, default=0, help="Row index in CSV to plot.")
-
-    
-    
-
-    args = parser.parse_args()
+def main(args: SimpleNamespace):
 
     df_landmarks = pd.read_csv(args.landmarks_csv)
     landmark_names = _infer_landmark_names(df_landmarks)
@@ -245,10 +232,30 @@ if __name__ == "__main__":
 
 
     image_path = df_landmarks["image_path"].iloc[args.idx]
-    plot_landmarks(
+    fig = plot_landmarks(
         image=image_path,
         landmarks=landmarks,
         annotate=True,
         landmark_labels=label_names,
     )
+    return fig
+    
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Plot landmarks from a CSV file.")
+    #parser.add_argument("--landmarks_csv", type=str, required=True, help="Path to landmarks CSV file.")
+    # Debugging:
+    parser.add_argument("--landmarks_csv", 
+                        type=str, required=False, 
+                        default="/home/cwatzenboeck/code/RA/autopix_muw_x_ray_pipeline/dev_dir/output_dir/AUTOPIX_000017_20170505_F_L_dp_MTwo_landmarks_F.csv",
+                        help="Path to landmarks CSV file.")
+    
+    parser.add_argument("--idx", type=int, default=0, help="Row index in CSV to plot.")
+
+
+    args = parser.parse_args()
+    args = SimpleNamespace(**args.__dict__)
+    fig = main(args)
     plt.show()
