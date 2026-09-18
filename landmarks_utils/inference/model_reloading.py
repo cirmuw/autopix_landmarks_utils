@@ -32,10 +32,12 @@ def load_models_and_settings(config):
         run_id = config["model"]["run_id"]
         model_artifact_name = config["model"].get("model_artifact_name", "best_model")
         logged_model_uri = f"runs:/{run_id}/{model_artifact_name}"  # or the path you used
-        model = mlflow.pytorch.load_model(logged_model_uri)
+        # The models were logged from CUDA tensors, so map_location is required
+        # to reload them on a machine without a GPU.
+        device = get_device(getattr(config, "device", "auto"))
+        model = mlflow.pytorch.load_model(logged_model_uri, map_location=device)
         model.eval()
 
-        device = get_device(getattr(config, "device", "auto"))
         heatmap_generator_artifact_name = config["model"].get("heatmap_generator_artifact_name", "best_heatmap_generator")
         logged_heatmap_uri = f"runs:/{run_id}/{heatmap_generator_artifact_name}"
         heatmap_generator = mlflow.pytorch.load_model(logged_heatmap_uri, map_location=device)

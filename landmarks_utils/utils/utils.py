@@ -6,13 +6,19 @@ from tqdm import tqdm
 from pathlib import Path
 from glob import glob
 import numpy as np
-import pkg_resources
 import git
 import argparse
 from pprint import pprint
 import json
 import yaml
 import pydoc
+#import pkg_resources
+from importlib.metadata import version, PackageNotFoundError
+def get_package_version(distribution_name: str) -> str:
+    try:
+        return version(distribution_name)
+    except PackageNotFoundError:
+        return "unknown"
 
 
 
@@ -150,9 +156,9 @@ def get_optional_config_parameter(config: dict, key: str, default_value=None, de
 def package_infos(package, level=1):
     package_root = get_package_rootdir(package, level=level)
     infos = get_git_infos(package_root)
-    version = pkg_resources.get_distribution(package.__name__).version
+    v = get_package_version(package)
     r = dict(name = package.__name__, 
-             version=version, 
+             version=v, 
              package_root=str(package_root))
     return {**r, **infos}
 
